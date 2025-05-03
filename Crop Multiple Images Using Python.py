@@ -18,6 +18,6 @@ def crop_images_in_folder(folder_path):
             right_filename = filename.replace("a", "c")
             right_crop.save(os.path.join(folder_path, right_filename))
 
-# Seth path to the folder containing images
-folder_path = r"c:\Users\Usman\Desktop\test"
+# Set path to the folder containing images
+folder_path = r"C:\Users\DANISH LAPTOP\Desktop\Crop Multiple Images Using Python"
 crop_images_in_folder(folder_path)
