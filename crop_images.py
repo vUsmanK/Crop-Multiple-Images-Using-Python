@@ -3,7 +3,6 @@ import logging
 from PIL import Image
 import argparse
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def crop_images_in_folder(folder_path, output_folder, margin_percentage):
@@ -22,13 +21,11 @@ def crop_images_in_folder(folder_path, output_folder, margin_percentage):
 
                 margin = int(width * margin_percentage / 100)
 
-                # Left crop
                 left_crop = image.crop((margin, 0, width // 2, height))
                 left_filename = filename.replace("a", "b")
                 left_crop.save(os.path.join(output_folder, left_filename))
                 logging.info(f"Saved left crop: {left_filename}")
 
-                # Right crop
                 right_crop = image.crop((width // 2, 0, width - margin, height))
                 right_filename = filename.replace("a", "c")
                 right_crop.save(os.path.join(output_folder, right_filename))
@@ -41,7 +38,6 @@ def crop_images_in_folder(folder_path, output_folder, margin_percentage):
     logging.info(f"Processing complete. Total images processed: {processed_count}")
 
 if __name__ == "__main__":
-    # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Crop multiple images in a folder.")
     parser.add_argument(
         "folder_path",
@@ -58,5 +54,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # Run the cropping function
     crop_images_in_folder(args.folder_path, args.output_folder, args.margin_percentage)
